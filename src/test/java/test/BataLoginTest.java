@@ -37,10 +37,10 @@ public void openBrowser() {
 }
 @AfterMethod
 public void captureResult(ITestResult result) {
-	if(result.getStatus()==result.SUCCESS) {
+	if(result.getStatus()==ITestResult.SUCCESS) {
 		test.log(Status.PASS, result.getName());
 		}
-	else if(result.getStatus()==result.FAILURE) {
+	else if(result.getStatus()==ITestResult.FAILURE) {
 		test.log(Status.FAIL, result.getName());
 	}
 	else {
@@ -51,10 +51,11 @@ public void captureResult(ITestResult result) {
 	
 @Test
 public void test() {
+	test=extend.createTest("test");
 	BataLoginpage page=new BataLoginpage(driver);
 	page.LoginClick();
-	page.SendName(Parametrization);
-	page.SendPass(null);
+	page.SendName("ddpatil1998@gmail.com");
+	page.SendPass("Poiuy@0987");
 	page.ClickSignin();
 	
 }
